@@ -8,6 +8,12 @@ import Row from 'react-bootstrap/Row';
 
 function App() {
 
+  const [gender, setGender] = useState('men');
+
+  const genderSelected = (gender) => {
+    setGender(gender);
+  }
+
   return(
     <div>
       <Navbar bg="light">
@@ -16,13 +22,13 @@ function App() {
       <Container>
         <Row>
           <Col xs={12}>
-            <GenderDropdown />
+            <GenderDropdown genderSelected={genderSelected} />
           </Col>
         </Row>
         <Row>
           <Col xs={12}></Col>
         </Row>
-        <ChartWrapper />
+        <ChartWrapper gender={gender}/>
       </Container>
     </div>
   )
