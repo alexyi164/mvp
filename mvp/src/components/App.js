@@ -13,35 +13,35 @@ function App() {
   const [data, setData] = useState(null);
   const [gender, setGender] = useState('men');
 
-  useEffect(() => {
-    console.log(data)
-    loadMainData()
-  })
+  // useEffect(() => {
+  //   console.log(data)
+  //   loadMainData()
+  // })
 
   const genderSelected = (gender) => {
     setGender(gender);
   }
 
-  const loadMainData = () => {
-    axios.get(`http://localhost:3000/info`)
-      .then((response) => {
-        // response = response.data;
-        console.log(response);
-        response.sort((a, b) => {
-          if (a.positive < b.positive) {
-            return -1;
-          } else if (a.positive > b.positive) {
-            return 1;
-          }
-          return 0;
-        })
-        let dataArr = response.slice(0, 14);
-        setData(dataArr);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  // const loadMainData = () => {
+  //   axios.get(`http://localhost:3000/info`)
+  //     .then((response) => {
+  //       // response = response.data;
+  //       console.log(response);
+  //       response.sort((a, b) => {
+  //         if (a.positive < b.positive) {
+  //           return -1;
+  //         } else if (a.positive > b.positive) {
+  //           return 1;
+  //         }
+  //         return 0;
+  //       })
+  //       let dataArr = response.slice(0, 14);
+  //       setData(dataArr);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
 
   return(
     <div>
