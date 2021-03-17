@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import ChartWrapper from './ChartWrapper';
-import GenderDropdown from './GenderDropdown';
+import TotalCasesWrapper from './TotalCasesWrapper';
+import ViewDropdown from './ViewDropdown';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
@@ -11,37 +11,11 @@ import axios from 'axios';
 function App() {
 
   const [data, setData] = useState(null);
-  const [gender, setGender] = useState('men');
+  const [view, setView] = useState('totalCases');
 
-  // useEffect(() => {
-  //   console.log(data)
-  //   loadMainData()
-  // })
-
-  const genderSelected = (gender) => {
-    setGender(gender);
+  const viewSelected = (view) => {
+    setView(view);
   }
-
-  // const loadMainData = () => {
-  //   axios.get(`http://localhost:3000/info`)
-  //     .then((response) => {
-  //       // response = response.data;
-  //       console.log(response);
-  //       response.sort((a, b) => {
-  //         if (a.positive < b.positive) {
-  //           return -1;
-  //         } else if (a.positive > b.positive) {
-  //           return 1;
-  //         }
-  //         return 0;
-  //       })
-  //       let dataArr = response.slice(0, 14);
-  //       setData(dataArr);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
 
   return(
     <div>
@@ -51,16 +25,17 @@ function App() {
       <Container>
         <Row>
           <Col xs={12}>
-            <GenderDropdown genderSelected={genderSelected} />
+            <ViewDropdown view={view} viewSelected={viewSelected} />
           </Col>
         </Row>
         <Row>
           <Col xs={12}></Col>
         </Row>
-        <ChartWrapper gender={gender}/>
+        <TotalCasesWrapper view={view}/>
       </Container>
     </div>
   )
+
 
   // const [count, setCount] = useState(0);
 

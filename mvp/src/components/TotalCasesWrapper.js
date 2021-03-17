@@ -1,11 +1,11 @@
 
 import React, { Component } from 'react';
-import D3Chart from './D3Chart';
+import TotalCases from './TotalCases';
 
-export default class ChartWrapper extends Component {
+export default class TotalCasesWrapper extends Component {
 	componentDidMount() {
 		this.setState({
-			chart: new D3Chart(this.refs.chart)
+			chart: new TotalCases(this.refs.chart)
 		})
 	}
 
@@ -14,7 +14,7 @@ export default class ChartWrapper extends Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		this.state.chart.update(nextProps.gender)
+		this.state.chart.update(nextProps.view)
 	}
 
 	render() {
